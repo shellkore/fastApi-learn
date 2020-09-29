@@ -13,7 +13,7 @@ db= []
 
 @app.get('/') # instead of app.route
 def index():
-	return {'key':'value'}
+	return {'msg':'API working. Check /docs for more'}
 
 @app.get('/cities')
 def get_cities():
