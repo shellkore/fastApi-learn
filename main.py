@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from typing import Optional
 
 app = FastAPI()
 
@@ -31,3 +32,7 @@ def delete_city(city_id:int): #automatic validation because of type hint set to 
 	deleted = db[city_id-1]
 	db.pop(city_id-1)
 	return {'delted': deleted}
+
+@app.get('/items/{item_id}')
+def get_item(item_id: int, q: Optional[str] = None):
+	return {'item_id':item_id,'q':q}
