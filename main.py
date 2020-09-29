@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Optional
+import uvicorn
 
 app = FastAPI()
 
@@ -36,3 +37,6 @@ def delete_city(city_id:int): #automatic validation because of type hint set to 
 @app.get('/items/{item_id}')
 def get_item(item_id: int, q: Optional[str] = None):
 	return {'item_id':item_id,'q':q}
+
+if __name__ == '__main__':
+	uvicorn.run(app)
