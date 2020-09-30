@@ -3,6 +3,8 @@ from pydantic import BaseModel
 from typing import Optional
 import uvicorn
 
+import imgEncode
+
 app = FastAPI()
 
 class City(BaseModel):
@@ -38,5 +40,14 @@ def delete_city(city_id:int): #automatic validation because of type hint set to 
 async def get_item(item_id: int, q: Optional[str] = None):
 	return {'item_id':item_id,'q':q}
 
+@app.post('/imgencode')
+async def img_encode(msg: str, password: str):
+	outputImageName = imgEncode.encode(msg,password)
+	return {'OutPut_image_name':outputImageName}
+
 if __name__ == '__main__':
 	uvicorn.run(app)
+
+# gunicorn
+# uvloop
+# httptools
