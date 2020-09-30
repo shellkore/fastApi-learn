@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from typing import Optional
 import uvicorn
 
-import imgEncode
+from ImageSteganography import hideData, showData
 
 app = FastAPI()
 
@@ -41,9 +41,16 @@ async def get_item(item_id: int, q: Optional[str] = None):
 	return {'item_id':item_id,'q':q}
 
 @app.post('/imgencode')
-async def img_encode(msg: str, password: str):
-	outputImageName = imgEncode.encode(msg,password)
-	return {'OutPut_image_name':outputImageName}
+async def img_encode(msg: str, key: Optional[str] = None):
+	imageName = 'image/input.png'
+	res = hideData(imageName,msg)
+	return res
+
+@app.post('/imgdecode')
+async def img_decode(key: Optional[str] = None):
+	imageName = 'image/output.png'
+	res = showData(imageName)
+	return res
 
 if __name__ == '__main__':
 	uvicorn.run(app)
