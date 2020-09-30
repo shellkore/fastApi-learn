@@ -35,7 +35,7 @@ def delete_city(city_id:int): #automatic validation because of type hint set to 
 	return {'delted': deleted}
 
 @app.get('/items/{item_id}')
-def get_item(item_id: int, q: Optional[str] = None):
+async def get_item(item_id: int, q: Optional[str] = None):
 	return {'item_id':item_id,'q':q}
 
 if __name__ == '__main__':
