@@ -1,4 +1,4 @@
-opencv_python==4.2.0.34
+opencv-python-headless
 pydantic==1.6.1
 fastapi==0.61.1
 uvicorn==0.12.1
