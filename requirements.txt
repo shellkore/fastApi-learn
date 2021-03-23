@@ -6,3 +6,5 @@ numpy
 gunicorn
 uvloop
 httptools
+jinja2
+aiofiles
