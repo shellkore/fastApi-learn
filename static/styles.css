@@ -1,0 +1,38 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+
+.heading{
+	width: 100%;
+	text-align: center;
+	/*font-size: x-large;*/
+}
+.container{
+	display: flex;
+	flex-flow: row wrap;
+	height: 100vh;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+ul{
+	height: 70vh;
+	width: 100%;
+	overflow: auto;
+	font-size: xx-large;
+	background-color: #3517c736;
+}
+
+.msgs{
+	width:70%;
+}
+
+input{
+	height: 5vh;
+	width:80%;
+	font-size: xx-large;
+}
+button{
+	height: 4vh;
+}

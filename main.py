@@ -6,6 +6,7 @@ import base64
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
+import uvicorn
 
 from ImageSteganography import hideData, showData
 
@@ -134,14 +135,14 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
     try:
         while True:
             data = await websocket.receive_text()
-            await manager.send_personal_message(f"You wrote: {data}", websocket)
-            await manager.broadcast(f"Client #{client_id} says: {data}")
+            # await manager.send_personal_message(f"You wrote: {data}", websocket)
+            await manager.broadcast(f"{client_id} says: {data}")
     except WebSocketDisconnect:
         manager.disconnect(websocket)
-        await manager.broadcast(f"Client #{client_id} left the chat")
+        await manager.broadcast(f"{client_id} left the chat")
 
 if __name__ == '__main__':
-	uvicorn.run(app)
+    uvicorn.run(app,host='0.0.0.0')
 
 # gunicorn
 # uvloop
