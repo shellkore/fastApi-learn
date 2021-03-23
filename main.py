@@ -6,7 +6,6 @@ import base64
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
-import uvicorn
 
 from ImageSteganography import hideData, showData
 
@@ -143,7 +142,6 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
 
 if __name__ == '__main__':
     uvicorn.run(app,host='0.0.0.0')
-
 # gunicorn
 # uvloop
 # httptools

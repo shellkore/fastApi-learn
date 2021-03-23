@@ -26,7 +26,9 @@
             let user_name = prompt("What's your nickname?")
             var client_id = user_name;
             // document.querySelector("#ws-id").textContent = client_id;
-            var ws = new WebSocket(`ws://localhost:8000/ws/${client_id}`);
+            var url = window.location.href
+            var ip_with_port = url.slice(url.indexOf(':')+3,url.lastIndexOf('/'));
+            var ws = new WebSocket(`ws://${ip_with_port}/ws/${client_id}`);
             ws.onmessage = function(event) {
                 var messages = document.getElementById('messages')
                 var message = document.createElement('li')
